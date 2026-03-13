@@ -1,53 +1,20 @@
-import { Link } from "react-router-dom";
-import Layout from "../components/Layout";
-import Hero from "../components/Hero";
-import ScrollReveal from "../components/ScrollReveal";
-import "../GlobalTheme.css";
+import { motion } from 'framer-motion';
+import { animation2 } from '../animations/variants';
 
-function Home() {
-  return (
-    <Layout>
-      <Hero
-        title="Ocean Tide Drop"
-        subtitle="A cinematic AI surfer universe — where myth, creativity, and cosmic tides shape every experience."
-        variant="wave"
-      />
-
-      <div className="wave-divider"></div>
-
-      <div className="card-grid">
-        <ScrollReveal>
-          <div className="card cosmic-border">
-            <h2>Cosmic Worldbuilding</h2>
-            <p>
-              Dive into a universe shaped by tides, storms, and starlight — a
-              mythic world crafted with intention and cinematic depth.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <div className="card cosmic-border">
-            <h2>Legendary Founders</h2>
-            <p>
-              Meet the spirits who guide the tides: Sailor Ann, Stormy Gray, Sky
-              Marlin, and Shannon — the architect of it all.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <div className="card cosmic-border">
-            <h2>Aqua‑Teal Glow</h2>
-            <p>
-              A signature visual identity inspired by bioluminescent waters and
-              cosmic energy — the heart of Ocean Tide Drop’s aesthetic.
-            </p>
-          </div>
-        </ScrollReveal>
-      </div>
-    </Layout>
-  );
-}
-
+const Home = () => (
+  <motion.div variants={animation2.container} initial="hidden" animate="show" className="flex flex-col items-center justify-center min-h-[70vh]">
+    <motion.h1 variants={animation2.item} className="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[var(--neon-blue)] to-white leading-none text-center">
+      SURVIVE THE <br/>NEURAL WAVE
+    </motion.h1>
+    <motion.p variants={animation2.item} className="mt-6 text-[var(--neon-blue)] tracking-[0.3em] uppercase font-light">
+      The Ultimate AI Competitive Protocol
+    </motion.p>
+    <motion.button 
+      variants={animation2.float} animate="animate"
+      className="mt-12 px-12 py-4 border-2 border-[var(--neon-pink)] text-[var(--neon-pink)] font-black hover:bg-[var(--neon-pink)] hover:text-black transition-all neon-glow-pink"
+    >
+      ENTER THE GRID
+    </motion.button>
+  </motion.div>
+);
 export default Home;

@@ -1,44 +1,30 @@
-import React from 'react';
+mport { motion } from 'framer-motion';
+import { animation2 } from '../animations/variants';
 
-const Challenges = () => {
-  const missions = [
-    { id: 'CH-01', title: "Neural Link Initiation", type: "Onboarding", status: "COMPLETED" },
-    { id: 'CH-02', title: "Island Perimeter Scan", type: "Exploration", status: "IN_PROGRESS" },
-    { id: 'CH-03', title: "The Founders Protocol", type: "Lore", status: "LOCKED" },
-    { id: 'CH-04', title: "Gear Synchronization", type: "Maintenance", status: "AVAILABLE" }
-  ];
-
-  return (
-    <div className="terminal-content" style={{ padding: '30px', color: '#00ff00', fontFamily: 'monospace' }}>
-      <h2 style={{ borderBottom: '2px solid #00ff00', paddingBottom: '10px' }}>
-        [ MISSION_LOG: ACTIVE_CHALLENGES ]
-      </h2>
-      
-      <div className="mission-grid" style={{ display: 'grid', gap: '20px', marginTop: '20px' }}>
-        {missions.map(mission => (
-          <div key={mission.id} style={{ 
-            border: '1px solid #004400', 
-            padding: '15px', 
-            backgroundColor: 'rgba(0, 20, 0, 0.5)',
-            boxShadow: 'inset 0 0 10px #002200'
-          }}>
-            <div style={{ fontSize: '0.8rem', color: '#888' }}>ID: {mission.id}</div>
-            <div style={{ fontSize: '1.2rem', margin: '5px 0' }}>{mission.title}</div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.9rem', opacity: 0.7 }}>TYPE: {mission.type}</span>
-              <span style={{ 
-                color: mission.status === 'COMPLETED' ? '#00ff00' : 
-                       mission.status === 'IN_PROGRESS' ? '#ffff00' : '#ff0000',
-                fontWeight: 'bold'
-              }}>
-                [{mission.status}]
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
+const Challenges = () => (
+  <motion.div variants={animation2.container} initial="hidden" animate="show" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    {[1,2,3,4,5,6,7,8].map(i => (
+      <motion.div 
+        key={i} variants={animation2.item}
+        whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,0,229,0.1)' }}
+        className="p-8 border border-[var(--neon-pink)] text-[var(--neon-pink)] cursor-pointer transition-all"
+      >
+        <div className="text-4xl font-black mb-4 opacity-50">0{i}</div>
+        <h4 className="font-bold tracking-tighter">SYNTAX OVERLOAD</h4>
+        <p className="text-[10px] mt-2 opacity-80 uppercase">Difficulty: Ultra</p>
+      </motion.div>
+    ))}
+  </motion.div>
+);
 export default Challenges;
+3.4 Progression Page (src/pages/Progression.jsx)
+3.5 Community Page (src/pages/Community.jsx)
+3.6 Members Page (src/pages/Members.jsx)
+3.7 Blog Page (src/pages/Blog.jsx)
+3.8 Free Page (src/pages/Free.jsx)
+3.9 Founders Page (src/pages/Founders.jsx)
+3.10 Campfire Page (src/pages/Campfire.jsx)
+3.11 Arena Page (src/pages/Arena.jsx)
+3.12 Dashboard Page (src/pages/Dashboard.jsx)
+3.13 Ceremony Page (src/pages/Ceremony.jsx)
+3.14 Tools Page (src/pages/Tools.jsx)   
