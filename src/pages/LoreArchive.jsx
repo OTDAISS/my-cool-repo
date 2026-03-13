@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useProgression } from '../hooks/ProgressionContext';
+import { useSurfingEngine } from '../hooks/useSurfingEngine';
 
 const LoreArchive = () => {
-  const mastery = Number(localStorage.getItem('survivorMastery')) || 0;
+  // Built-out integration: Using central state instead of direct localStorage
+  const { progression } = useProgression();
+  const mastery = progression.level * 10; // Example mastery calculation based on level
+
+  // Animation 2: Applying surfing physics to the archive layout
+  const { y, tilt } = useSurfingEngine(0.4);
 
   const logs = [
     {
@@ -31,49 +38,76 @@ const LoreArchive = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="text-center space-y-2">
-        <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Lore Archive</h2>
-        <p className="text-cyan-400 font-mono text-xs uppercase tracking-[0.3em]">Sector 7 // Encrypted Logs</p>
+    <div className="relative min-h-screen bg-black pt-24 pb-12 px-4 overflow-hidden">
+      
+      {/* Background Animation 2 Physics Layer */}
+      <div 
+        className="absolute inset-0 opacity-10 pointer-events-none" 
+        style={{ transform: `translateY(${y}px) rotate(${tilt / 20}deg)` }}
+      >
+        <div className="w-full h-full bg-[repeating-linear-gradient(0deg,transparent,transparent_40px,#00eaff_41px)]" />
       </div>
 
-      <div className="grid gap-6">
-        {logs.map((log) => {
-          const isLocked = mastery < log.required;
+      <div className="max-w-4xl mx-auto space-y-12 relative z-10">
+        <div className="text-center space-y-4">
+          <h2 className="text-6xl font-black italic uppercase tracking-tighter text-white drop-shadow-[0_0_15px_#00eaff]">
+            LORE_ARCHIVE
+          </h2>
+          <div className="inline-block px-4 py-1 border border-neon-blue bg-neon-blue/10">
+            <p className="text-neon-blue font-mono text-xs uppercase tracking-[0.4em]">
+              SECTOR_7 // ENCRYPTED_LOGS // MASTERY: {mastery}%
+            </p>
+          </div>
+        </div>
 
-          return (
-            <div 
-              key={log.id} 
-              className={`p-6 rounded-2xl border transition-all duration-500 ${
-                isLocked 
-                ? 'bg-slate-900/20 border-white/5 opacity-50 grayscale' 
-                : 'bg-slate-900/60 border-cyan-500/30 shadow-lg'
-              }`}
-            >
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <span className="text-[10px] font-mono text-cyan-500 block mb-1">LOG_ID: {log.id}</span>
-                  <h3 className={`text-xl font-bold ${isLocked ? 'text-gray-600' : 'text-white'}`}>
-                    {isLocked ? 'DECRYPTION REQUIRED' : log.title}
-                  </h3>
+        <div className="grid gap-8">
+          {logs.map((log) => {
+            const isLocked = mastery < log.required;
+
+            return (
+              <div 
+                key={log.id} 
+                className={`group p-8 border-l-4 transition-all duration-700 transform ${
+                  isLocked 
+                  ? 'bg-white/5 border-white/10 opacity-40 grayscale blur-[1px]' 
+                  : 'bg-white/[0.03] border-neon-blue shadow-[0_0_30px_rgba(0,234,255,0.1)] hover:shadow-[0_0_40px_rgba(0,234,255,0.2)] hover:bg-white/[0.06]'
+                }`}
+                style={{ skewX: isLocked ? '0deg' : '-2deg' }}
+              >
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <span className="text-[10px] font-mono text-neon-blue block mb-1 opacity-70">DATA_STREAM_{log.id}</span>
+                    <h3 className={`text-2xl font-black italic tracking-tight ${isLocked ? 'text-white/30' : 'text-white'}`}>
+                      {isLocked ? 'ENCRYPTION_LOCKED' : log.title}
+                    </h3>
+                  </div>
+                  {isLocked ? (
+                    <span className="text-[10px] bg-neon-pink/10 text-neon-pink border border-neon-pink/40 px-3 py-1 font-black uppercase tracking-widest">
+                      REQUIRES {log.required}%_MASTERY
+                    </span>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-neon-green rounded-full animate-pulse shadow-[0_0_10px_#39ff14]" />
+                      <span className="text-[10px] text-neon-green font-mono uppercase tracking-widest">DECRYPTED</span>
+                    </div>
+                  )}
                 </div>
-                {isLocked ? (
-                  <span className="text-[10px] bg-red-500/10 text-red-500 border border-red-500/20 px-2 py-1 rounded font-mono">
-                    LOCKED: {log.required}% MASTERY
-                  </span>
-                ) : (
-                  <span className="text-[10px] bg-cyan-500/10 text-cyan-500 border border-cyan-500/20 px-2 py-1 rounded font-mono uppercase">
-                    Decrypted
-                  </span>
+                
+                <p className={`text-sm leading-relaxed font-mono tracking-wide ${isLocked ? 'select-none opacity-20' : 'text-white/70 group-hover:text-white transition-colors'}`}>
+                  {log.content}
+                </p>
+
+                {!isLocked && (
+                  <div className="mt-6 pt-4 border-t border-white/5">
+                    <button className="text-[10px] font-black text-neon-blue hover:text-white transition-colors uppercase tracking-widest">
+                      [ ACCESS_DEEP_MEMORY ]
+                    </button>
+                  </div>
                 )}
               </div>
-              
-              <p className={`text-sm leading-relaxed font-mono ${isLocked ? 'blur-sm select-none' : 'text-gray-400'}`}>
-                {log.content}
-              </p>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
