@@ -14,6 +14,7 @@ import Arena from './pages/Arena';
 import Dashboard from './pages/Dashboard';
 import Ceremony from './pages/Ceremony';
 import ThirdPartyTools from './pages/ThirdPartyTools';
+import GearEquipment from './pages/GearEquipment';
 
 export default function App() {
   return (
@@ -33,7 +34,8 @@ export default function App() {
           <Route path="arena" element={<Arena />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="ceremony" element={<Ceremony />} />
-          <Route path="tools" element={<ThirdPartyTools />} />
+          <Route path="tools" element={<ThirdPartyTools />} />import GearEquipment from './pages/GearEquipment';
+<Route path="/gear" element={<GearEquipment />} />
         </Route>
       </Routes>
     </BrowserRouter>
