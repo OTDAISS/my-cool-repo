@@ -10,7 +10,7 @@ import Blog from './pages/Blog';
 import Free from './pages/Free';
 import Founders from './pages/Founders';
 import Campfire from './pages/Campfire';
-import Arena from './pages/Arena';
+import Surfer from './pages/Arena';
 import Dashboard from './pages/Dashboard';
 import Ceremony from './pages/Ceremony';
 import ThirdPartyTools from './pages/ThirdPartyTools';
@@ -31,11 +31,10 @@ export default function App() {
           <Route path="free" element={<Free />} />
           <Route path="founders" element={<Founders />} />
           <Route path="campfire" element={<Campfire />} />
-          <Route path="arena" element={<Arena />} />
+          <Route path="arena" element={<Surfer />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="ceremony" element={<Ceremony />} />
-          <Route path="tools" element={<ThirdPartyTools />} />import GearEquipment from './pages/GearEquipment';
-<Route path="/gear" element={<GearEquipment />} />
+          <Route path="/gear" element={<GearEquipment />} />
         </Route>
       </Routes>
     </BrowserRouter>
