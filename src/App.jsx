@@ -34,7 +34,7 @@ export default function App() {
           <Route path="arena" element={<Surfer />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="ceremony" element={<Ceremony />} />
-          <Route path="/gear" element={<GearEquipment />} />
+          <Route path="gear" element={<GearEquipment />} />
         </Route>
       </Routes>
     </BrowserRouter>
