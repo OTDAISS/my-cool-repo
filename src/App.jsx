@@ -35,6 +35,7 @@ export default function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="ceremony" element={<Ceremony />} />
           <Route path="gear" element={<GearEquipment />} />
+          <Route path="tools" element={<ThirdPartyTools />} />
         </Route>
       </Routes>
     </BrowserRouter>
