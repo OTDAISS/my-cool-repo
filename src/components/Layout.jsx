@@ -12,7 +12,7 @@ const Layout = () => (
         ))}
       </div>
     </nav>
-    <main className="p-8"><Outlet /></main>
+    <main className="p-8"><Outlet/></main>
   </div>
 );
 export default Layout;
