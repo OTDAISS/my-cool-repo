@@ -1,5 +1,9 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+  "redirects": [
+    {
+      "source": "/old-wordpress-url",
+      "destination": "/new-vercel-path",
+      "permanent": true
+    }
   ]
 }
