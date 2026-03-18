@@ -1,9 +1,24 @@
 {
-  "redirects": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/old-wordpress-url",
-      "destination": "/new-vercel-path",
-      "permanent": true
+      "src": "index.js",
+      "use": "@vercel/node"
     }
-  ]
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/dist/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ],
+  "functions": {
+    "index.js": {
+      "includeFiles": "views/**"
+    }
+  }
 }
