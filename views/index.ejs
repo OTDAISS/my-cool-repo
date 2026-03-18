@@ -1,18 +1,105 @@
-<div class="hero-container" style="background-color: #003366; color: #00f5d4; padding: 100px 20px; text-align: center; font-family: 'Segoe UI', sans-serif;">
-    
-    <h1 style="font-size: 3rem; margin-bottom: 10px;">Welcome to the AI Surfer Survivor 🏄‍♀️</h1>
-    <p style="font-size: 1.2rem; color: #ffffff; max-width: 600px; margin: 0 auto 30px;">
-        Don't let the tech tide sweep you away. Forge ahead with AI-driven tools and gamified learning.
-    </p>
-
-    <div class="cta-buttons">
-        <a href="/dashboard-pink" style="background-color: #ffb6c1; color: #333; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 10px; display: inline-block;">
-            Start Your Journey (Free)
-        </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <style>
+        :root {
+            --deep-blue: <%= deepBlue %>;
+            --bright-teal: <%= brandColor %>;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f9fc;
+            color: var(--deep-blue);
+        }
+        header {
+            background-color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--bright-teal);
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: var(--deep-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .pink-card { border-top: 10px solid #ff99cc; }
+        .blue-card { border-top: 10px solid var(--bright-teal); }
         
-        <a href="/dashboard-blue" style="background-color: #00f5d4; color: #003366; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 10px; display: inline-block;">
-            Go Pro Survivor
-        </a>
-    </div>
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        .btn-pink { background-color: #ff99cc; color: white; }
+        .btn-blue { background-color: var(--bright-teal); color: white; }
+        .btn:hover { opacity: 0.8; }
 
-</div>
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI Surfer Survivor</h1>
+        <p class="tagline">Forge Ahead. Ride the AI Wave. Today is the Day.</p>
+    </header>
+
+    <main>
+        <div class="card pink-card">
+            <h2 style="color: #ff66b2;">Pink Tier</h2>
+            <p>Start your journey as an AI Survivor. Access our free community and core training modules.</p>
+            <a href="#" class="btn btn-pink">Enter Dashboard</a>
+        </div>
+
+        <div class="card blue-card">
+            <h2>Blue Tier</h2>
+            <p>Unlock advanced full-stack challenges, automation tools, and the pro survival kit.</p>
+            <a href="#" class="btn btn-blue">Level Up & Join</a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; <%= new Date().getFullYear() %> Ocean Tide | Launch Day Live
+    </footer>
+
+</body>
+</html>
