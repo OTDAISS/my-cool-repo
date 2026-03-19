@@ -18,11 +18,11 @@
     },
     {
       "src": "/dashboard-pink",
-      "dest": "/index.html"
+      "dest": "/src/pages/free.jsx"
     },
     {
       "src": "/dashboard-blue",
-      "dest": "/index.html"
+      "dest": "/src/pages/members.jsx"
     },
     {
       "src": "/(.*)",
