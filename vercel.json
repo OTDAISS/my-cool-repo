@@ -11,22 +11,18 @@
       "includeFiles": "views/**/*.ejs"
     }
   },
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/dist/assets/$1"
+  "rewrites": [
+    { 
+      "source": "/dashboard-pink", 
+      "destination": "/index.html" 
     },
-    {
-      "src": "/dashboard-pink",
-      "dest": "/src/pages/free.jsx"
+    { 
+      "source": "/dashboard-blue", 
+      "destination": "/index.html" 
     },
-    {
-      "src": "/dashboard-blue",
-      "dest": "/src/pages/members.jsx"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "api/index.js"
+    { 
+      "source": "/(.*)", 
+      "destination": "/api/index.js" 
     }
   ]
 }
